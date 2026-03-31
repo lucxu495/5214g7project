@@ -330,14 +330,14 @@ class BackfillService:
         )
 
         if not is_manual:
-            end_time = start_time - timedelta(hours=1)
-            start_time = end_time - timedelta(hours=5)
+            new_end_time = start_time
+            new_start_time = new_end_time - timedelta(hours=5)
             update_task_config(
                 "backfill_orderbook",
                 {
                     "is_open": True,
-                    "start_time": start_time.isoformat(),
-                    "end_time": end_time.isoformat(),
+                    "start_time": new_start_time.isoformat(),
+                    "end_time": new_end_time.isoformat(),
                     "chunk_minutes": 30,
                     "max_urls_per_run": 5,
                 },
@@ -968,14 +968,14 @@ class BackfillService:
         )
 
         if not is_manual:
-            end_time = start_time - timedelta(hours=1)
-            start_time = end_time - timedelta(hours=5)
+            new_end_time = start_time
+            new_start_time = new_end_time - timedelta(hours=5)
             update_task_config(
                 "backfill_orderbook_book_snapshot",
                 {
                     "is_open": True,
-                    "start_time": start_time.isoformat(),
-                    "end_time": end_time.isoformat(),
+                    "start_time": new_start_time.isoformat(),
+                    "end_time": new_end_time.isoformat(),
                     "chunk_minutes": 30,
                     "max_urls_per_run": 5,
                 },
