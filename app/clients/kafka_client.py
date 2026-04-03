@@ -388,7 +388,7 @@ class KafkaConsumerClient:
 
         try:
             while True:
-                message_pack = consumer.poll(timeout_ms=1000)
+                message_pack = consumer.poll(timeout_ms=5000)
 
                 if not message_pack:
                     break

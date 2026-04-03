@@ -21,8 +21,8 @@ from app.utils.wrapper_utils import log_task_run
     task_type="consume",
 )
 def consume_polymarket_markets_raw_to_clickhouse(
-    max_messages_per_partition: int = 200,
-    max_workers: int = 3,
+    max_messages_per_partition: int = 10000,
+    max_workers: int = 4,
 ):
     """
     Consume polymarket.markets.raw from Kafka, parse snapshots, and insert into

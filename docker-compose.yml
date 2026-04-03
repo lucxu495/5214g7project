@@ -50,7 +50,7 @@ services:
       - clickhouse
       - mysql
       - mongodb
-    command: celery -A app.celery.celery_app worker --loglevel=info --concurrency=4
+    command: celery -A app.celery.celery_app worker --loglevel=info --concurrency=8
 
   celery_beat:
     build: .

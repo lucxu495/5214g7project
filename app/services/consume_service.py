@@ -75,8 +75,8 @@ class ConsumeService:
         *,
         topic: str | None = None,
         group_id: str = "polymarket.markets.raw.to.clickhouse.v1",
-        max_messages_per_partition: int = 2000,
-        max_workers: int = 3,
+        max_messages_per_partition: int = 10000,
+        max_workers: int = 4,
     ) -> int:
         topic_name = topic or KAFKA_TOPIC_POLYMARKET_MARKETS_RAW
         logger.info(
@@ -90,7 +90,7 @@ class ConsumeService:
             group_id=group_id,
             auto_offset_reset="earliest",
             enable_auto_commit=False,
-            consumer_timeout_ms=4000,
+            consumer_timeout_ms=10000,
         ) as consumer:
             messages_by_partition = consumer.consume(
                 max_messages_per_partition=max_messages_per_partition,
